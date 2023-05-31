@@ -5,8 +5,8 @@ const PORT = 7000;
 const app = express();
 connect();
 
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.json())  // siempre va sin excepcion 
+app.use(express.urlencoded({extended:false}))  // siempre va sin excepcion 
 
 app.use("/movies", moviesRoutes)
 

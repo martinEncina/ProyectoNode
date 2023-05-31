@@ -43,16 +43,17 @@ const arrayMovies = [
 mongoose.connect("mongodb+srv://root:root@cluster0.reac62r.mongodb.net/moviesDB?retryWrites=true&w=majority")
 .then(async () => {
     const allPeliculas = await Movie.find();
-    if(allPeliculas.length > 0){
+    if(allPeliculas.length > 0) {
         await Movie.collection.drop();
         console.log("Peliculas borradas");
     };
 })
 .catch ((error) => console.log ("error borrado Peliculas", error))
 .then(async () => {
-    const movieMap = arrayMovies.map((movie) => new movie(movie));
+    const movieMap = arrayMovies.map((movie) => new Movie(movie));
     await Movie.insertMany(movieMap),
-    console.log("Peliculas insertadas", error);
+    console.log("Peliculas insertadas");
 })
 .catch ((error) => console.log ("error insertando peliculas", error))
 .finally(() => mongoose.disconnect())
+
